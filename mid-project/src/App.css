@@ -1,0 +1,108 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+.App {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #333;
+}
+
+button {
+  padding: 8px 12px;
+  margin: 5px;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+input {
+  padding: 8px;
+  margin: 5px 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+.user-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.user-card em {
+  display: block;
+  margin-top: 8px;
+}
+
+.user-form {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.user-card.completed {
+  border: 2px solid green;
+}
+
+.user-card.incomplete {
+  border: 2px solid red;
+}
+
+.other-data {
+  display: none;
+  margin-top: 10px;
+  background-color: #eef;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.user-card:hover .other-data {
+  display: block;
+}
+.selected {
+  border: 2px solid orange;
+}
+.todo-item {
+  padding: 5px 0;
+}
+.todo-item button {
+  margin-left: 10px;
+  padding: 4px 8px;
+  font-size: 0.85rem;
+}
