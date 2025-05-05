@@ -18,7 +18,6 @@ function CreateUser({ users, setUsers }) {
       address: { city: "N/A" },
     };
 
-    // אפשר לשלוח ל־API אם רוצים, אבל ה־state הוא העיקר כאן
     try {
       await fetch("https://jsonplaceholder.typicode.com/users", {
         method: "POST",
