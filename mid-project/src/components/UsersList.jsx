@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-function UsersList({ users, setUsers }) {
+function UsersList({ users, deleteUser }) {
   const [todos, setTodos] = useState([]);
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -27,10 +27,6 @@ function UsersList({ users, setUsers }) {
   const isUserCompleted = (userId) => {
     const userTodos = todos.filter((todo) => todo.userId === userId);
     return userTodos.length > 0 && userTodos.every((todo) => todo.completed);
-  };
-
-  const handleDelete = (id) => {
-    setUsers(users.filter((user) => user.id !== id));
   };
 
   const handleMarkCompleted = (todoId) => {
@@ -99,7 +95,7 @@ function UsersList({ users, setUsers }) {
             <em>Status: {completed ? "All tasks completed ✅" : "Incomplete ❌"}</em>
 
             <Link to={`/edit/${user.id}`}>Edit</Link>
-            <button onClick={() => handleDelete(user.id)} style={{ marginTop: "10px" }}>
+            <button onClick={() => deleteUser(user.id)} style={{ marginTop: "10px" }}>
               Delete
             </button>
 
