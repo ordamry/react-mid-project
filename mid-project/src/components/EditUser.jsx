@@ -1,36 +1,22 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-function EditUser({ users, setUsers }) {
+function EditUser({ getUserById, editUser }) {
   const { id } = useParams();
-  const [user, setUser] = useState(null);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const user = getUserById(parseInt(id));
+  const [name, setName] = useState(user?.name || "");
+  const [email, setEmail] = useState(user?.email || "");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const existingUser = users.find((u) => u.id === parseInt(id));
-    if (existingUser) {
-      setUser(existingUser);
-      setName(existingUser.name);
-      setEmail(existingUser.email);
-    }
-  }, [id, users]);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const updatedUser = { ...user, name, email };
-    const updatedUsers = users.map((u) =>
-      u.id === updatedUser.id ? updatedUser : u
-    );
-    setUsers(updatedUsers);
-
+    editUser({ ...user, name, email }) ;
     alert(`User updated: ${name}, ${email}`);
     navigate("/");
   };
 
-  if (!user) return <p>Loading user...</p>;
 
   return (
     <div>
@@ -55,6 +41,7 @@ function EditUser({ users, setUsers }) {
         </div>
 
         <button type="submit">Update</button>
+        <button type="button" onClick={() => navigate("/")}>Cancel</button>
       </form>
     </div>
   );

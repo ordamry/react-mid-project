@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function CreateUser({ users, setUsers }) {
+function CreateUser({createUser }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
@@ -10,7 +10,6 @@ function CreateUser({ users, setUsers }) {
     e.preventDefault();
 
     const newUser = {
-      id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
       name,
       email,
       phone: "N/A",
@@ -18,20 +17,10 @@ function CreateUser({ users, setUsers }) {
       address: { city: "N/A" },
     };
 
-    try {
-      await fetch("https://jsonplaceholder.typicode.com/users", {
-        method: "POST",
-        body: JSON.stringify(newUser),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      });
-
-      setUsers([...users, newUser]);
-      navigate("/");
-    } catch (error) {
-      console.error("Error creating user:", error);
-    }
+    const resp = await createUser(newUser);
+     if (resp?.success) navigate("/");
+     else
+     alert("user create failed");
   };
 
   return (
